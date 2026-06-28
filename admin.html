@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Panel Admin - BaiDeFest</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Partículas de fondo -->
+    <div id="particles-container"></div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="login-screen">
+        <div class="login-box">
+            <div class="login-emoji">🧛</div>
+            <h2 class="login-title">Acceso al Infierno</h2>
+            <p class="login-subtitle">Solo los elegidos pueden entrar...</p>
+            <input type="password" class="login-input" id="admin-password" placeholder="🔑 Contraseña...">
+            <button class="btn btn-primary" onclick="login()">🚪 Entrar</button>
+            <p class="login-hint">💡 Pista: "terror"</p>
+            <a href="index.html" class="back-link">← Volver al festival</a>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel" style="display:none;">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">🔐 BaiDeFest Admin</div>
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-section="events" onclick="showSection('events'); return false;">🎭 Eventos</a>
+                <a href="#" class="sidebar-link" data-section="shorts" onclick="showSection('shorts'); return false;">🎬 Cortos</a>
+                <a href="#" class="sidebar-link" data-section="movies" onclick="showSection('movies'); return false;">🎞️ Películas</a>
+                <a href="#" class="sidebar-link" data-section="geekShock" onclick="showSection('geekShock'); return false;">🧠 Geek Shock</a>
+                <a href="#" class="sidebar-link" data-section="artists" onclick="showSection('artists'); return false;">🧛 Artistas</a>
+                <a href="#" class="sidebar-link" data-section="guests" onclick="showSection('guests'); return false;">🎤 Invitados</a>
+                <a href="#" class="sidebar-link" data-section="jury" onclick="showSection('jury'); return false;">⚖️ Jurado</a>
+                <a href="#" class="sidebar-link" data-section="gallery" onclick="showSection('gallery'); return false;">📸 Galería</a>
+                <a href="#" class="sidebar-link" data-section="awards" onclick="showSection('awards'); return false;">🏆 Premios</a>
+                <a href="#" class="sidebar-link" data-section="news" onclick="showSection('news'); return false;">📰 Noticias</a>
+                <a href="#" class="sidebar-link" data-section="info" onclick="showSection('info'); return false;">ℹ️ Info</a>
+                <a href="#" class="sidebar-link" data-section="tickets" onclick="showSection('tickets'); return false;">🎟️ Entradas</a>
+                <a href="#" class="sidebar-link" data-section="program" onclick="showSection('program'); return false;">📋 Programa</a>
+                <a href="#" class="sidebar-link" data-section="stats" onclick="showSection('stats'); return false;">📊 Estadísticas</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger" onclick="logout()">🚪 Cerrar Sesión</button>
+                <a href="index.html" class="back-link">← Volver al festival</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1 class="admin-title" id="section-title">🎭 Gestión de Eventos</h1>
+                <div class="admin-actions">
+                    <button class="btn btn-success" id="add-btn" onclick="openForm()">➕ Nuevo</button>
+                    <button class="btn btn-warning" onclick="exportData()">📥 Exportar JSON</button>
+                    <button class="btn btn-info" onclick="importData()">📤 Importar JSON</button>
+                    <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)">
+                </div>
+            </header>
+
+            <!-- Stats Section -->
+            <div class="admin-section" id="stats-section" style="display:none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-emoji">🎭</div>
+                        <div class="stat-number" id="stat-events">0</div>
+                        <div class="stat-label">Eventos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🎬</div>
+                        <div class="stat-number" id="stat-shorts">0</div>
+                        <div class="stat-label">Cortos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🎞️</div>
+                        <div class="stat-number" id="stat-movies">0</div>
+                        <div class="stat-label">Películas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🧠</div>
+                        <div class="stat-number" id="stat-geekShock">0</div>
+                        <div class="stat-label">Geek Shock</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🧛</div>
+                        <div class="stat-number" id="stat-artists">0</div>
+                        <div class="stat-label">Artistas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🎤</div>
+                        <div class="stat-number" id="stat-guests">0</div>
+                        <div class="stat-label">Invitados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">⚖️</div>
+                        <div class="stat-number" id="stat-jury">0</div>
+                        <div class="stat-label">Jurado</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">📸</div>
+                        <div class="stat-number" id="stat-gallery">0</div>
+                        <div class="stat-label">Imágenes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🏆</div>
+                        <div class="stat-number" id="stat-awards">0</div>
+                        <div class="stat-label">Premios</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">📰</div>
+                        <div class="stat-number" id="stat-news">0</div>
+                        <div class="stat-label">Noticias</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">ℹ️</div>
+                        <div class="stat-number" id="stat-info">0</div>
+                        <div class="stat-label">Info</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">🎟️</div>
+                        <div class="stat-number" id="stat-tickets">0</div>
+                        <div class="stat-label">Entradas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-emoji">📋</div>
+                        <div class="stat-number" id="stat-program">0</div>
+                        <div class="stat-label">Programa</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>📊 Resumen del Festival</h3>
+                    <div class="bar-chart" id="bar-chart"></div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="admin-section" id="table-section">
+                <div class="table-container">
+                    <table class="data-table" id="data-table">
+                        <thead id="table-head"></thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+                <div class="empty-state" id="empty-state" style="display:none;">
+                    <div class="empty-emoji">👻</div>
+                    <p>No hay registros... aún 👻</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- File Upload Input (hidden) -->
+    <input type="file" id="file-upload-input" accept="image/*" style="display:none" onchange="handleFileUpload(event)">
+
+    <!-- Form Modal -->
+    <div class="modal" id="form-modal">
+        <div class="modal-content modal-large">
+            <span class="modal-close" onclick="closeForm()">&times;</span>
+            <h2 class="modal-title" id="form-title">➕ Nuevo Registro</h2>
+            <form class="admin-form" id="admin-form" onsubmit="saveItem(event)">
+                <div class="form-fields" id="form-fields"></div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">💾 Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeForm()">❌ Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-modal">
+        <div class="modal-content modal-small">
+            <div class="delete-emoji">💀</div>
+            <h3>¿Estás seguro?</h3>
+            <p>Esta acción no se puede deshacer... 👻</p>
+            <div class="form-actions">
+                <button class="btn btn-danger" onclick="confirmDelete()">🔥 Sí, eliminar</button>
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">😰 Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

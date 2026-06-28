@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📸 Galería del Terror - BaiDeFest</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="navbar">
+        <div class="nav-brand">🎃 BaiDeFest</div>
+        <div class="nav-links" id="nav-links">
+            
+            <a href="index.html" class="nav-link">🏠 Inicio</a>
+            <a href="programa.html" class="nav-link">📋 Programa</a>
+            <a href="eventos.html" class="nav-link">🎭 Eventos</a>
+            <a href="cortos.html" class="nav-link">🎬 Cortos</a>
+            <a href="peliculas.html" class="nav-link">🎞️ Películas</a>
+            <a href="geek-shock.html" class="nav-link">🧠 Geek Shock</a>
+            <a href="artistas.html" class="nav-link">🧛 Artistas</a>
+            <a href="invitados.html" class="nav-link">🎤 Invitados</a>
+            <a href="jurado.html" class="nav-link">⚖️ Jurado</a>
+            <a href="galeria.html" class="nav-link">📸 Galería</a>
+            <a href="premios.html" class="nav-link">🏆 Premios</a>
+            <a href="noticias.html" class="nav-link">📰 Noticias</a>
+            <a href="info.html" class="nav-link">ℹ️ Info</a>
+            <a href="entradas.html" class="nav-link">🎟️ Entradas</a>
+            <a href="contacto.html" class="nav-link">📧 Contacto</a>
+            <a href="admin.html" class="nav-link admin-link">🔐 Admin</a>
+        </div>
+        <div class="hamburger" id="hamburger">☰</div>
+    </nav>
+
+    <section class="section" style="padding-top: 8rem;">
+        <div class="section-header">
+            <span class="section-emoji">📸</span>
+            <h2 class="section-title">Galería del Terror</h2>
+            <span class="section-emoji">📸</span>
+        </div>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">🎃 BaiDeFest</div>
+            <div class="footer-social">
+                <a href="#" class="social-link">👻</a>
+                <a href="#" class="social-link">🦇</a>
+                <a href="#" class="social-link">🕷️</a>
+                <a href="#" class="social-link">💀</a>
+            </div>
+            <p class="footer-text">© 2026 BaiDeFest - El terror nunca duerme... 🧟</p>
+            <p class="footer-warning">⚠️ Advertencia: Este festival puede causar pesadillas permanentes</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="detail-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            if (typeof renderGallery === 'function') renderGallery();
+        });
+    </script>
+</body>
+</html>

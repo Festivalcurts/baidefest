@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📧 Contacto - BaiDeFest</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="navbar">
+        <div class="nav-brand">🎃 BaiDeFest</div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link">🏠 Inicio</a>
+            <a href="programa.html" class="nav-link">📋 Programa</a>
+            <a href="eventos.html" class="nav-link">🎭 Eventos</a>
+            <a href="cortos.html" class="nav-link">🎬 Cortos</a>
+            <a href="peliculas.html" class="nav-link">🎞️ Películas</a>
+            <a href="geek-shock.html" class="nav-link">🧠 Geek Shock</a>
+            <a href="artistas.html" class="nav-link">🧛 Artistas</a>
+            <a href="invitados.html" class="nav-link">🎤 Invitados</a>
+            <a href="jurado.html" class="nav-link">⚖️ Jurado</a>
+            <a href="galeria.html" class="nav-link">📸 Galería</a>
+            <a href="premios.html" class="nav-link">🏆 Premios</a>
+            <a href="noticias.html" class="nav-link">📰 Noticias</a>
+            <a href="info.html" class="nav-link">ℹ️ Info</a>
+            <a href="entradas.html" class="nav-link">🎟️ Entradas</a>
+            <a href="contacto.html" class="nav-link">📧 Contacto</a>
+            <a href="admin.html" class="nav-link admin-link">🔐 Admin</a>
+        </div>
+        <div class="hamburger" id="hamburger">☰</div>
+    </nav>
+
+    <section class="section" style="padding-top: 8rem;">
+        <div class="section-header">
+            <span class="section-emoji">📧</span>
+            <h2 class="section-title">Contacto</h2>
+            <span class="section-emoji">📧</span>
+        </div>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+        </div>
+        <div class="contact-container">
+            <form class="contact-form" id="contact-form" onsubmit="handleContact(event)">
+                <input type="text" name="name" placeholder="👤 Tu nombre..." required>
+                <input type="email" name="email" placeholder="📧 Tu email..." required>
+                <select name="subject" required>
+                    <option value="">📝 Selecciona un tema...</option>
+                    <option value="general">📋 Información general</option>
+                    <option value="tickets">🎟️ Entradas</option>
+                    <option value="press">📰 Prensa</option>
+                    <option value="sponsor">🤝 Patrocinios</option>
+                    <option value="volunteer">🙋 Voluntariado</option>
+                    <option value="other">🦇 Otro</option>
+                </select>
+                <textarea name="message" placeholder="💬 Escribe tu mensaje..." required></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%">📨 Enviar Mensaje</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div class="contact-item-text">
+                        <h4>Email</h4>
+                        <p>info@baidefest.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div class="contact-item-text">
+                        <h4>Teléfono</h4>
+                        <p>+34 666 666 666</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div class="contact-item-text">
+                        <h4>Ubicación</h4>
+                        <p>Cementerio Viejo, Transilvania</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">🕐</div>
+                    <div class="contact-item-text">
+                        <h4>Horario</h4>
+                        <p>31 Oct - 2 Nov 2026<br>20:00 - 06:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">🎃 BaiDeFest</div>
+            <div class="footer-social">
+                <a href="#" class="social-link">👻</a>
+                <a href="#" class="social-link">🦇</a>
+                <a href="#" class="social-link">🕷️</a>
+                <a href="#" class="social-link">💀</a>
+            </div>
+            <p class="footer-text">© 2026 BaiDeFest - El terror nunca duerme... 🧟</p>
+            <p class="footer-warning">⚠️ Advertencia: Este festival puede causar pesadillas permanentes</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
